@@ -5,7 +5,7 @@ set nocompatible
 filetype off
 
 " plugins
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim " requires git clone of vundle
 call vundle#begin()
 
 " let Vundle manage Vundle, required
