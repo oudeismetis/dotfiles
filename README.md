@@ -1,7 +1,7 @@
 # dotfiles
 the way I likes it *
 
-Inspiration from: 
+## Inspiration from: 
 1. [JulianGindi](https://github.com/JulianGindi/dotfiles)
 1. [akrawchyk](https://github.com/akrawchyk/dotfiles)
 1. [josephabrahams](https://github.com/josephabrahams/dotfiles)
