@@ -7,3 +7,6 @@ the way I likes it *
 1. [josephabrahams](https://github.com/josephabrahams/dotfiles)
 1. [nsmoot](https://github.com/nsmoot/dotfiles)
 1. [holman](https://github.com/holman/dotfiles)
+
+## TODO
+1. incorporate https://github.com/thoughtbot/rcm
