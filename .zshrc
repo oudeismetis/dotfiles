@@ -31,64 +31,10 @@ _fab_list() {
 compctl -K _fab_list fab
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # match uppercase from lowercase
 
-# ls colors
-if [ $PLATFORM = FreeBSD ] || [ $PLATFORM = Darwin ]; then
-  CLR_DIR=Ex
-  CLR_SYM_LINK=Gx
-  CLR_SOCKET=Fx
-  CLR_PIPE=dx
-  CLR_EXE=Cx
-  CLR_BLOCK_SP=Dx
-  CLR_CHAR_SP=Dx
-  CLR_EXE_SUID=hb
-  CLR_EXE_GUID=ad
-  CLR_DIR_STICKY=Ex
-  CLR_DIR_WO_STICKY=Ex
-  LSCOLORS="$CLR_DIR$CLR_SYM_LINK$CLR_SOCKET$CLR_PIPE$CLR_EXE$CLR_BLOCK_SP"
-  LSCOLORS="$LSCOLORS$CLR_CHAR_SP$CLR_EXE_SUID$CLR_EXE_GUID$CLR_DIR_STICKY"
-  LSCOLORS="$LSCOLORS$CLR_DIR_WO_STICKY"
-  export LSCOLORS
-  export CLICOLOR="YES"
-fi
-
-# aliases
-if [ $PLATFORM = Linux ]; then
-  alias ls='ls -F --color=auto'
-else
-  alias ls='ls -FG'
-  alias top='top -ocpu'
-fi
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias ln='ln -i'
-alias dir='ll'
-alias l='ll'
-alias ll='ls -lh'
-alias la='ls -A'
-alias vi='vim'
-if [ -x /usr/local/bin/mvim ]; then
-  alias vim='mvim -v'
-fi
-alias s='screen'
-alias tree='tree -C --dirsfirst'
-alias rmpyc='find . -name "*.pyc" -delete'
-alias ddu='find . -maxdepth 1 -type d -exec du -s {} \;'
-alias unix2dos='recode lat1..ibmpc'
-alias dos2unix='recode ibmpc..lat1'
-alias t='vim -c ":$" ~/.todo'
-alias todo='cat ~/.todo'
-alias p='ping www.make.sh'
-
 # viewing / editing
 export PAGER='less'
 export EDITOR='vim'
 export MUTT_EDITOR='vim'
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-tomorrow.dark.sh"
-#BASE16_SHELL="~/.dotfiles/colors/base16-tomorrow.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 autoload colors; colors # ANSI color codes
 
