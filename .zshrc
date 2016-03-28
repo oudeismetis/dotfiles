@@ -52,12 +52,6 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
 # prompt
-export VIRTUAL_ENV_DISABLE_PROMPT=y
-_virtualenv_prompt () {
-  if [[ -n $VIRTUAL_ENV ]]; then
-    echo "$reset_color workon$fg[green]" `basename "$VIRTUAL_ENV"`
-  fi
-}
 _git_prompt () {
   test -z "$(pwd | egrep '/\.git(/|$)')" || return
   local _git_branch="`git branch 2>/dev/null | egrep '^\*' | sed 's/^\* //'`"
@@ -80,7 +74,7 @@ _git_prompt () {
   echo -n "[%F{gray}±%f:%F{blue}$_git_branch%f$_git_status"
 }
 export PROMPT='
-%(?..[%{$fg[red]%}%?%{$reset_color%}] )%{$fg[magenta]%}%m%{$reset_color%}: %{$fg[cyan]%}%~$(_virtualenv_prompt)
+%(?..[%{$fg[red]%}%?%{$reset_color%}] )%{$fg[magenta]%}%m%{$reset_color%}: %{$fg[cyan]%}%~
 %{$fg[yellow]%}$%{$reset_color%} '
 if which git >/dev/null 2>&1; then
   RPROMPT='$(_git_prompt)'
@@ -100,6 +94,10 @@ if [ -d "$RBENV_DIR" ]; then
     eval "$(rbenv init -)"
   fi
 fi
+
+# nvm - node version manager
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
 
 # npm
 NPM_PACKAGES_DIR="$HOME/.npm-packages"
