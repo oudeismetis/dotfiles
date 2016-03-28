@@ -117,4 +117,4 @@ if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
 
-export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+# export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
