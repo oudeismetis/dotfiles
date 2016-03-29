@@ -19,7 +19,6 @@ ln -s .dotfiles/.git .git
 ln -s .dotfiles/.gitconfig .gitconfig
 ln -s .dotfiles/.gitmodule .gitmodule
 ln -s .dotfiles/.hgrc .hgrc
-ln -s .dotfiles/.vim .vim
 ln -s .dotfiles/.vimrc .vimrc
 ln -s .dotfiles/.zshrc .zshrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -35,3 +34,7 @@ inside vim:
 :PluginInstall
 ```
 
+tmux config:
+```
+tmux source ~/.dotfiles/.tmux.conf
+```
