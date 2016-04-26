@@ -111,5 +111,6 @@ let g:syntastic_python_checkers = ['pylama'] " pip install pylama
 " Send things to clipboard
 set clipboard=unnamed
 
-" nerdtree ignore files
+" nerdtree
 let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeShowHidden=1
