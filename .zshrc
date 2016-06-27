@@ -1,4 +1,7 @@
-export PLATFORM=`uname -s`
+# path
+
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin:/Users/edwardromano/bin:/sbin:/Users/edwardromano/bin"
+export PATH
 mkdir -p ~/.zsh/cache
 
 #Source all of our zsh files
@@ -6,17 +9,13 @@ export ZSH=~/.dotfiles/zsh
 typeset -U config_files
 config_files=($ZSH/*.zsh)
 
+export PLATFORM=`uname -s`
+
 # Load all additional files
 for file in $config_files
 do
   source $file
 done
-
-# path
-PATH="/usr/local/sbin:/usr/local/bin:$PATH"
-PATH="$PATH:/sbin"
-PATH="$PATH:$HOME/bin"
-export PATH
 
 # languages
 export LC_ALL="en_US.UTF-8"

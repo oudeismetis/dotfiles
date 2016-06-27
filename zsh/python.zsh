@@ -1,6 +1,10 @@
 # pyenv
-if which pyenv > /dev/null; then 
-  eval "$(pyenv init -)"; 
+PYENV_DIR="$HOME/.pyenv"
+if [ -d "$PYENV_DIR" ]; then
+  export PATH="$PYENV_DIR/bin:$PATH"
+  if which pyenv > /dev/null; then
+    eval "$(pyenv init -)";
+  fi
 fi
 
 # pip
