@@ -117,3 +117,5 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+
+alias blender=/Applications/blender.app/Contents/MacOS/blender

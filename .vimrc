@@ -39,7 +39,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 set background=dark
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=100
 endif
 
 " search
@@ -47,6 +47,11 @@ set ignorecase " case-insensitive for all-lower patterns
 set smartcase " case-sensitive only for patterns with uppercase
 set incsearch " highlight next match while you type
 set hlsearch " highlight all matches found
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 " tabs / indentation
 set tabstop=2
@@ -68,8 +73,9 @@ filetype plugin indent on
 
 au FileType ruby set ts=2 sw=2 tw=79 et sts=2 autoindent
 au FileType yaml set ts=2 sw=2 et
-au FileType javascript,python set ts=4 sw=4 tw=79 et sts=4 autoindent
-au FileType html,perl,c,cpp set tw=79 autoindent
+au FileType python set ts=4 sw=4 tw=99 et sts=4 autoindent
+au FileType html set sts=4 sw=4 et
+au FileType javascript,perl,c,cpp set sts=2 sw=2 et
 au FileType mail set tw=68 et
 au BufRead,BufNewFile /usr/local/etc/nginx/* set ft=nginx
 
@@ -92,9 +98,11 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
 " search mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " syntax highlighting
 set statusline+=%#warningmsg#
@@ -109,7 +117,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylama'] " pip install pylama 
 
 " Send things to clipboard
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard=unnamed
+endif
 
 " nerdtree
 let NERDTreeIgnore = ['\.pyc$']
