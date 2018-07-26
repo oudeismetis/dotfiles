@@ -95,14 +95,16 @@ if [ -d "$RBENV_DIR" ]; then
 fi
 
 # nvm - node version manager
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
+# . $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # npm
-NPM_PACKAGES_DIR="$HOME/.npm-packages"
-if [ -d "$NPM_PACKAGES_DIR" ]; then
-  export PATH="$PATH:$NPM_PACKAGES_DIR/bin"
-fi
+# NPM_PACKAGES_DIR="$HOME/.npm-packages"
+# if [ -d "$NPM_PACKAGES_DIR" ]; then
+#   export PATH="$PATH:$NPM_PACKAGES_DIR/bin"
+# fi
 
 # user-dependent settings
 # if [[ "`id -u`" -eq 0 ]]; then
@@ -118,4 +120,6 @@ fi
 
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
+# JAVA
+export JAVA_HOME=$(/usr/libexec/java_home)
 alias blender=/Applications/blender.app/Contents/MacOS/blender

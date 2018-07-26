@@ -12,12 +12,33 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
     # Create 3 panes. Each will be in the project's dir.
     # First pane will have vim and nerdtree open
     tmux send-keys -t $SESSIONNAME "cd $SESSIONNAME" C-m
+    tmux send-keys -t $SESSIONNAME "pipenv install --dev --python 3.6" C-m
+    # Would be nice if we could user tmux wait-for here. But pipenv install is async
+    # The following hack basically does the same thing
+    echo "Waiting for pipenv install..."
+    sleep 15
+    tmux capture-pane -t $SESSIONNAME:0
+    old_buffer=""
+    new_buffer=$(tmux show-buffer)
+    while [[ "$old_buffer" != "$new_buffer" ]] ; do
+      sleep 20
+      diff <(echo "$old_buffer" ) <(echo "$new_buffer")
+      old_buffer=$new_buffer
+      tmux capture-pane -t $SESSIONNAME:0
+      new_buffer=$(tmux show-buffer)
+    done
+    # On with the show
+    tmux send-keys -t $SESSIONNAME "pipenv shell" C-m
+    sleep 2
+    tmux send-keys -t $SESSIONNAME "pip install pylama" C-m
     tmux send-keys -t $SESSIONNAME "vim" C-m
     tmux send-keys -t $SESSIONNAME ":NERDTree" C-m
     tmux split-window -h
     tmux send-keys -t $SESSIONNAME "cd $SESSIONNAME" C-m
+    tmux send-keys -t $SESSIONNAME "pipenv shell" C-m
     tmux split-window -v
     tmux send-keys -t $SESSIONNAME "cd $SESSIONNAME" C-m
+    tmux send-keys -t $SESSIONNAME "pipenv shell" C-m
     tmux select-pane -t 0
   fi
 

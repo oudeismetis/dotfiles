@@ -116,6 +116,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylama'] " pip install pylama 
 
+" Spellcheck certain file types
+autocmd BufRead,BufNewFile *.md setlocal spell
+setlocal spell spelllang=en_us
+
+" Autocomplete using CTRL-n or CTRL-p
+set complete+=kspell
+
 " Send things to clipboard
 if $TMUX == ''
   set clipboard=unnamed
