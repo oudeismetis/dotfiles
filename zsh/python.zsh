@@ -10,7 +10,6 @@ fi
 # virtualenv
 export WORKON_HOME=~/Envs
 mkdir -p $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
 
 # pip
 if which pip >/dev/null 2>&1; then

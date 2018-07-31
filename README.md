@@ -10,24 +10,33 @@ the way I likes it *
 1. [RCM](https://github.com/thoughtbot/rcm)
 
 ## Instalation
+
+zsh:
 ```
-cd ~
-mkdir dev
-cd dev
-git clone git@github.com:oudeismetis/dotfiles.git
-ln -s ~/dev/dotfiles/.bundle .bundle
-ln -s ~/dev/dotfiles/.gemrc .gemrc
-ln -s ~/dev/dotfiles/.git .git
-ln -s ~/dev/dotfiles/.gitconfig .gitconfig
-ln -s ~/dev/dotfiles/.gitmodule .gitmodule
-ln -s ~/dev/dotfiles/.hgrc .hgrc
-ln -s ~/dev/dotfiles/.vimrc .vimrc
-ln -s ~/dev/dotfiles/.zshrc .zshrc
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+echo $SHELL
+```
+
+if not zsh:
+```
+chsh -s $(which zsh)
+```
+
+get the dotfiles:
+```
+git clone git@github.com:oudeismetis/dotfiles.git $HOME/.dotfiles
+ln -s $HOME/.dotfiles/.bundle .bundle
+ln -s $HOME/.dotfiles/.gemrc .gemrc
+ln -s $HOME/.dotfiles/.git .git
+ln -s $HOME/.dotfiles/.gitconfig .gitconfig
+ln -s $HOME/.dotfiles/.gitmodule .gitmodule
+ln -s $HOME/.dotfiles/.hgrc .hgrc
+ln -s $HOME/.dotfiles/.vimrc .vimrc
+ln -s $HOME/.dotfiles/.zshrc .zshrc
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 pip install pylama
-source ~/.zshrc 
-vim ~/.vimrc
+source $HOME/.zshrc
+vim $HOME/.vimrc
 ```
 
 inside vim:
