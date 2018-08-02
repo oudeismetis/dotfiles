@@ -37,6 +37,13 @@ export MUTT_EDITOR='vim'
 
 autoload colors; colors # ANSI color codes
 
+
+# So terminals can have base16_tomorrow-night
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+    eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # history
 setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_DUPS

@@ -11,6 +11,12 @@ the way I likes it *
 
 ## Instalation
 
+```
+brew install reattach-to-user-namespace
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+```
+
 zsh:
 ```
 echo $SHELL
@@ -32,10 +38,11 @@ ln -s $HOME/.dotfiles/.gitmodule .gitmodule
 ln -s $HOME/.dotfiles/.hgrc .hgrc
 ln -s $HOME/.dotfiles/.vimrc .vimrc
 ln -s $HOME/.dotfiles/.zshrc .zshrc
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+ln -s $HOME/.dotfiles/.tmux.conf .tmux.conf
+
 pip install pylama
 source $HOME/.zshrc
+base16_tomorrow-night
 vim $HOME/.vimrc
 ```
 
@@ -47,5 +54,5 @@ inside vim:
 
 tmux config:
 ```
-tmux source ~/.dotfiles/.tmux.conf
+tmux source-file ~/.tmux.conf
 ```
