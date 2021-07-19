@@ -25,3 +25,6 @@ alias dos2unix='recode ibmpc..lat1'
 alias t='vim -c ":$" ~/.todo'
 alias todo='cat ~/.todo'
 alias p='ping www.make.sh'
+
+# vendor and vendor/* in this file
+# alias ag='ag --path-to-ignore ~/.ignore'

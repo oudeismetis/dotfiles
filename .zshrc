@@ -88,6 +88,8 @@ fi
 setopt PROMPT_SUBST # perform substitution/expansion in prompts
 
 # python
+# PYTHON_DIR=$(python -m site --user-base)
+# export PATH="$PATH:$PYTHON_DIR/bin"
 if [ -f ~/.pythonrc ]; then
   export PYTHONSTARTUP=~/.pythonrc
 fi
@@ -130,3 +132,5 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 alias blender=/Applications/blender.app/Contents/MacOS/blender
 alias new-tmux=~/.dotfiles/new-tmux.sh
+# function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

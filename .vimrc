@@ -42,9 +42,12 @@ endif
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " colorscheme base16-tomorrow
 " set background=dark
-" if exists('+colorcolumn')
-"   set colorcolumn=100
-" endif
+
+" vertical ruler for line lengths
+if exists('+colorcolumn')
+  set colorcolumn=130
+endif
+set textwidth=130
 
 " search
 set ignorecase " case-insensitive for all-lower patterns
@@ -122,7 +125,7 @@ let g:syntastic_python_checkers = ['pylama'] " pip install pylama
 
 " Spellcheck certain file types
 autocmd BufRead,BufNewFile *.md setlocal spell
-setlocal spell spelllang=en_us
+" setlocal spell spelllang=en_us
 
 " Autocomplete using CTRL-n or CTRL-p
 set complete+=kspell

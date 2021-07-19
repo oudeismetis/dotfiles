@@ -9,10 +9,52 @@ the way I likes it *
 1. [holman](https://github.com/holman/dotfiles)
 1. [RCM](https://github.com/thoughtbot/rcm)
 
-## Instalation
+## Installation
+
+Install iterm2
+Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install tmux
+Karabiner needed(?) for caps locks remap
+reattach-to-user-namespace no longer needed?
+https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/66
+
+Spellchecker misconfigured a little
+https://thoughtbot.com/blog/vim-spell-checking
+
+ag.vim is depricated
+brew install the_silver_searcher
+Switch toooo Ack? Something else?
+https://github.com/ggreer/the_silver_searcher
+https://github.com/rking/ag.vim
+
+brew update
+brew install python
+python --version (should be 3)
+pip3 --verison
+
+If not pip3 then:
+brew postinstall python
+and/or
+brew postinstall python3
+
+then...
+pip install --version pipenv
+
+(might need to resource zsh)
+pipenv --version
+
+Add a .pythonrc file
+https://github.com/whiteinge/dotfiles/blob/master/.pythonrc.py
+
+Copy/Paste issues
+https://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+first step important to disable iterm. Everything else is either outdated knowledge or already accounted for in my config
+
 
 ```
 brew install reattach-to-user-namespace
+brew install pipenv
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 ```

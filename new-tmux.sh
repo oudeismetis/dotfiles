@@ -1,8 +1,9 @@
 #!/bin/zsh                                                                                                   
 
 SESSIONNAME=$1
-if [[ $# == 2 ]]; then
+if [[ $# == 3 ]]; then
   lang=$2
+  lang_v=$3
 fi
 
 if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
@@ -11,14 +12,23 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
   tmux has-session -t $SESSIONNAME &> /dev/null
 
   if [ $? != 0 ]; then
+    # Installing pipenv
+    # cd $SESSIONNAME
+    # pipenv --venv
+    # if [ $? != 0 ]; then
+    #   pipenv --rm
+    # fi
+    # [ -f Pipfile ] && pipenv install --dev --python 3.8
+    # [ -f requirements.txt ] && pipenv install -r requirements.txt --dev --python 3.8
+    # [ -f requirements_test.txt ] && pipenv install -r requirements_test.txt --dev --python 3.8
     tmux new-session -s $SESSIONNAME -n script -d
     # Create 3 panes. Each will be in the project's dir.
     # First pane will have vim and nerdtree open
     tmux send-keys -t $SESSIONNAME "cd $SESSIONNAME" C-m
     if [ ${lang+x} ]; then
       echo "Installing pipenv..."
-      sleep 2
-      tmux send-keys -t $SESSIONNAME "pipenv install --dev --python 3.6" C-m
+      sleep 4
+      tmux send-keys -t $SESSIONNAME "pipenv install --dev --python $lang_v" C-m
       # Would be nice if we could user tmux wait-for here. But pipenv install is async
       # The following hack basically does the same thing
       echo "Waiting for pipenv install..."
@@ -35,7 +45,7 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
       done
       # On with the show
       tmux send-keys -t $SESSIONNAME "pipenv shell" C-m
-      sleep 2
+      sleep 5
       tmux send-keys -t $SESSIONNAME "pip install pylama" C-m
     fi
     tmux send-keys -t $SESSIONNAME "vim" C-m
@@ -56,5 +66,5 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
 
   tmux attach -t $SESSIONNAME
 else
-  printf '%s\n' "Need pass the name of a folder 'new-tmux.sh <folder-name>'"
+  printf '%s\n' "Expected 'new-tmux <folder-name> <python>'"
 fi

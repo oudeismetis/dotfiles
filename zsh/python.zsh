@@ -1,3 +1,6 @@
+# alias python='python3'
+# alias pip='pip3'
+
 # pyenv
 PYENV_DIR="$HOME/.pyenv"
 if [ -d "$PYENV_DIR" ]; then
