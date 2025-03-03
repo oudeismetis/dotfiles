@@ -42,7 +42,6 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
     tmux send-keys -t $SESSIONNAME "vim" C-m
     tmux send-keys -t $SESSIONNAME ":NERDTree" C-m
     tmux split-window -h
-    tmux resize-pane -R -t 0 20 C-m
     tmux send-keys -t $SESSIONNAME "cd $SESSIONNAME" C-m
     if [ ${lang+x} ]; then
       tmux send-keys -t $SESSIONNAME "pipenv shell" C-m

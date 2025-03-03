@@ -34,6 +34,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # match uppercase from lower
 export PAGER='less'
 export EDITOR='vim'
 export MUTT_EDITOR='vim'
+export BASE16_THEME='tomorrow'
 
 autoload colors; colors # ANSI color codes
 
@@ -42,7 +43,7 @@ autoload colors; colors # ANSI color codes
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
   [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
+    source "$BASE16_SHELL/profile_helper.sh"
 
 # history
 setopt HIST_REDUCE_BLANKS
@@ -126,7 +127,7 @@ fi
 # export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # JAVA
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 alias blender=/Applications/blender.app/Contents/MacOS/blender
 alias new-tmux=~/.dotfiles/new-tmux.sh
