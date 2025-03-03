@@ -18,7 +18,8 @@ if [[ $# != 0 && -d "$SESSIONNAME" ]]; then
     if [ ${lang+x} ]; then
       echo "Installing pipenv..."
       sleep 2
-      tmux send-keys -t $SESSIONNAME "pipenv install --dev --python 3.6" C-m
+      tmux send-keys -t $SESSIONNAME "pipenv --rm" C-m
+      tmux send-keys -t $SESSIONNAME "pipenv install --dev" C-m
       # Would be nice if we could user tmux wait-for here. But pipenv install is async
       # The following hack basically does the same thing
       echo "Waiting for pipenv install..."
